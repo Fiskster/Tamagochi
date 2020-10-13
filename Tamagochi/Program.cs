@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Tamagochi
 {
@@ -6,7 +7,14 @@ namespace Tamagochi
     {
         static void Main(string[] args)
         {
-            Tamagochi gochi = new Tamagochi();
+             Tamagochi gochi = new Tamagochi();
+        //     Thread thread = new Thread(gochi.Tick);
+        //    thread.Start();
+        //    Console.WriteLine("cum");
+        //    Thread.Sleep(100);
+         
+           
+           
 
             System.Console.WriteLine("Hello! I am your Tamagochi.");
             bool correctInput = false;
@@ -26,7 +34,6 @@ namespace Tamagochi
             }
             Console.Clear();
             gochi.Hi();
-            gochi.Tick();
 
         }
     }

@@ -15,30 +15,40 @@ namespace Tamagochi
         public string name = "";
 
         private bool isAlive = true;
+        public DateTime gameStart = DateTime.Now;
 
         public void Tick()
         {
-           Thread thread = new Thread(Tick);
-           thread.Start(2);
-           Thread.Sleep(15000);
-           
-            boredom = boredom + 10;
-            hunger = hunger + 10;
+            DateTime currentTime = DateTime.Now;
+            TimeSpan diffTime = currentTime - gameStart;
+            Console.WriteLine(diffTime.Ticks);
+            int minutesToTick = 1;
+            if (minutesToTick <= diffTime.Minutes)
+            {
+                for (int i = 0; i < diffTime.Minutes; i++)
+                {
+                    boredom = boredom + 10;
+                    hunger = hunger + 10;
+
+                }
+
+            }
+
         }
 
         public void Feed()
         {
-            hunger = hunger - Generator.Next(2,20);
+            hunger = hunger - Generator.Next(2, 20);
         }
         public void Hi()
         {
-            string greeting = words[Generator.Next(0,5)];
+            string greeting = words[Generator.Next(0, 5)];
             Console.WriteLine(greeting);
             ReduceBoredom();
         }
         private void ReduceBoredom()
         {
-            boredom = boredom - Generator.Next(2,20);
+            boredom = boredom - Generator.Next(2, 20);
         }
         public void Teach(string word)
         {
@@ -62,6 +72,6 @@ namespace Tamagochi
         {
             return isAlive;
         }
-    
+
     }
 }
